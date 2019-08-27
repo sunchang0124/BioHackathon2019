@@ -1,0 +1,3 @@
+[submodule "pytaskmanager"]
+	path = pytaskmanager
+	url = https://bitbucket.org/jvsoest/pytaskmanager.git
