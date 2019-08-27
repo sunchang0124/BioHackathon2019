@@ -21,12 +21,19 @@ Hardware:
 * Python 3.6 (with pip as dependency manager)
 
 ## How infrastructure works ##
-1. Set up data parties and Trusted secure enviroment (IPs)
-2. PyTaskManager gets ready (start listening)
-3. Researcher requests access to execute analysis model on data
-4. All data parties approve and hash PIs 
-5. Send to TSE and do matching and linking
-6. Matching result go to data parties and the researcher
-7. Researcher sends analysis to TSE
-8. Run model on data
+1. Set up data parties and Trusted secure enviroment 
+2. PyTaskManager gets ready (Master site start listening)
+3. Researcher provide data analysis model to TSE 
+    - This model should be approved by data parties
+3. Data parties give inputs and build the Docker images
+    - All parties have to agree on one salting key
+    - Hashing and salting will be done
+    - Hashed identifiers + actual data will be encrypted 
+    - Send to TSE 
+4. TSE receives all encrypted data files, then:
+    - Verification and decryption 
+    - matching and linking data
+    - Run linear regression model on actual data
+5. Results will be generated at TSE
+6. TSE Send results back to researcher
 
