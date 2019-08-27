@@ -1,15 +1,9 @@
 import time
 start_time = time.time()
 
-import matplotlib
-matplotlib.use('Agg')
-
 import json
 import pandas as pd
-import seaborn as sns
 import numpy as np
-import matplotlib.pyplot as plt
-import recordlinkage
 
 #read input file
 with open('security_input.json') as data_file:    
