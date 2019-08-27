@@ -1,0 +1,4 @@
+{   "party_name": "party_3",
+    "data_file": "data_party_3.csv", 
+    "salt_text": "ab", 
+    "id_feature": ["housenum", "zipcode", "date_of_birth", "sex"]}

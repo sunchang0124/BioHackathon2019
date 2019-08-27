@@ -1,0 +1,12 @@
+
+
+    {"parties": ["party_1","party_2", "party_3"],
+    "party_1fileUUID": "8454abd5-91ea-423b-9709-c8a351b6d373", 
+    "party_1encryptKey": "OR0b4rwpSiTifPp30AYOVjgemceJg06xmKcxUGLbu7c=", 
+    "party_1verifyKey": "vj37PHnnsQ8ELt54auHwoSBfFKFfL+ZHH8gYfy7WWKM=",
+    "party_2fileUUID": "0bbffa8f-f888-4515-a132-1b9c28dbb1c9", 
+    "party_2encryptKey": "VGqN5RJwP96uSGchaw0nhBW+YXZ4yxDao1inkTTt8XI=", 
+    "party_2verifyKey": "g3oUzdCQFEnb0FN1GU1R1B/XR1qQLL6FlLi76BT4SE0=",
+    "party_3fileUUID": "46584a02-c760-4a02-9ee7-fe9ea051d652", 
+    "party_3encryptKey": "1+uPwM3vMtHvPHHVDgD8WtufOcZSP8SrHmEPXa4sYRs=", 
+    "party_3verifyKey": "zYhSAJaCSW6+PUv5mv8LCuZgVnAylx7l5SA/JHcayZk="}
