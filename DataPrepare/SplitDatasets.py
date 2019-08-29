@@ -21,4 +21,4 @@ for i in range(0, num_of_party):
     else:
         df_sub = df[variables[int(i*sets): int((i+1)*sets)]]
     save_df = pd.concat([PI, df_sub], axis=1, join='inner')
-    save_df.to_csv('data_party_%d.csv' %(i+1), index=None)
+    save_df.to_csv('output/data_party_%d.csv' %(i+1), index=None)
