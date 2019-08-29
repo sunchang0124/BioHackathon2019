@@ -1,7 +1,7 @@
 ### curFolder=$(pwd)
 
 cd containers/createContainer/baseContainer
-docker build -t datasharing/basecontainer .
+sh build.sh
 
 ## Run Party_1_Container get its unique encrypt key, file UUID, VerifyKey
 cd containers/createContainer/Party_1_Container
