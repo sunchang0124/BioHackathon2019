@@ -48,6 +48,7 @@ def verify_and_decrypt(verifyBase64, decryptKey, encFile, newFile):
 #run decryption and verify
 
 for p in parties:
+    print('Verifying %s' %p)
     verify_and_decrypt(inputJson["%sverifyKey" %(p)], inputJson["%sencryptKey" %(p)], '/data/%sData.enc' %(p), "/data/encrypted_%s.csv" %(p) )
 
 print("Your signiture is verified and datasets are decrypted!")

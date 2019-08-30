@@ -36,8 +36,10 @@ def postFile():
 
 @app.route('/file/<string:uuidFile>')
 def getFile(uuidFile):
-    if not (request.remote_addr == '127.0.0.1') or (request.remote_addr == '10.0.*.*'):
-        abort(403)  # Forbidden
+    print(request.remote_addr)
+    # if not (request.remote_addr == '127.0.0.1') or (request.remote_addr == '172.17.*.*') or \
+    # (request.remote_addr == '10.0.*.*') or (request.remote_addr == '192.168.*.*'):
+    #     abort(403)  # Forbidden
 
     filePath = os.path.join(storageDir, uuidFile)
     if os.path.exists(filePath):
