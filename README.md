@@ -22,16 +22,18 @@ Hardware:
 
 
 ## Install the infrastructure locally ##
-### Prepare datasets for multiple parties ###
+### 1. Prepare datasets for multiple parties ###
 1. In terminal, go to **DataPrepare** folder and run ```docker build -t splitdata . ``` (You can run ```docker images``` to check if "splitdata" image is in the list)
 2. Edit **input.json** file. Input how many data parties you have and which data file you use. (Details about data are described in the README.md file in "DataPrepare" folder)
 3. In terminal
-    - MAC users: run ```docker run --rm -v $(pwd)/output:/output sliptdata```
-    - Windows users: run ```docker run --rm -v %cd%/output:/output sliptdata```
+    - MAC users: run ```docker run --rm -v $(pwd)/output:/output splitdata```
+    - Windows users: run ```docker run --rm -v %cd%/output:/output splitdata```
 4. You will see splited datasets files in a new generated **output"** folder. Put splited datasets into data parties foler (e.g., "Party_1_Container", "Party_2_Container") 
-5. If you need more data parties, copy paste one existing "Party_X_Container" and rename it.
+5. If you need more data parties, 
+    - copy paste one existing "Party_X_Container" and rename it
+    - Change name of the data file in **Dockerfile** ```COPY data_party_X.csv data_party_X.csv```
 
-### Setup stations at data parties ###
+### 2. Setup stations at data parties ###
 1. Go to _containers/createContainer_ and build the base image (contains Python 3.6 and libraries) by running:
     - ```cp -R ../../PQcrypto baseContainer/PQcrypto```
     - ```docker rmi datasharing/base``` (skip this line if it's your first time build this image)
@@ -44,23 +46,25 @@ Hardware:
     - Input personal identifier features which are used for linking purpose
 3. In terminal, run
     - ```docker rmi datasharing/"your_party_name" ```(e.g., party_1)
-    - ```docker build -t datasharing/"your_party_name" .\```
+    - ```docker build -t datasharing/"your_party_name" .```
 4. Each party needs to do step 2-3
-5^. Run ```docker images``` to check if images were built successfully
+5. Run ```docker images``` to check if images were built successfully
 
-### Setup another station as Trust Secure Environment (TSE) ###
+### 3. Setup another station as Trust Secure Environment (TSE) ###
 1. Go to containers/TSEImage and run:
     - ```docker rmi datasharing/tse```
     - ```docker build -t datasharing/tse .\```
 
-*** Now, all parties are ready ***
-### Start the communication channel (on localhost(0.0.0.0:5001)) ###
+** Now, all parties are ready **
+
+### 4. Start the communication channel (on localhost(0.0.0.0:5001)) ###
 1. Go to Local_PyTaskManager folder and run in terminal: 
     - ```docker build -t fileservice .```
 2. After building the image, run: 
-    - ```docker run --rm -p 5001:5001 fileservice ```
+    - ```docker run --rm -p 5001:5001 \ ```
+    - ```-v $(pwd)/storage:/storage fileservice ```
 
-### Data parties prepare and encrypt data files ###
+### 5. Data parties prepare and encrypt data files ###
 1. Start a new tab in terminal and go to each party's folder (e.g., Party_1_Container):
     MAC users run:
     - ```docker run --rm --add-host dockerhost:192.168.65.2 \```
@@ -73,10 +77,10 @@ Hardware:
     - ```-v %cd%/encryption:/encryption datasharing/"Your_party_name"``` (e.g., party_1) 
     
 2. A "your_party_name_key.json" file will be generated in a new "encryption" folder. It contains: UUID of data file, verify key, and encryption key. These keys need to be send to TSE
-3^. Potiental error in this step: "dockerhost:192.168.65.2" and "dockerhost:10.0.75.1" 
-4^. You can run "sh S1_DataPartyRun.sh" on Mac. It combines all command lines into one file.
+3. Potiental error in this step: "dockerhost:192.168.65.2" and "dockerhost:10.0.75.1" 
+4. You can run "sh S1_DataPartyRun.sh" on Mac. It combines all command lines into one file.
 
-### Execution at TSE ###
+### 6. Execution at TSE ###
 1. Go to _containers/TSEImage_ and edit **security_input.json**:
     - Give names of all data parties
     - and input data file UUIDs, encrypt keys, and verify keys from all data parties
@@ -91,6 +95,7 @@ Hardware:
     - ```docker run --rm --add-host dockerhost:10.0.75.1 \```
     - ```-v %cd%/output:/output \```
     - ```-v %cd%/security_input.json:/security_input.json datasharing/tse```
+
 
 ## How infrastructure works ##
 1. Set up data parties and Trusted secure enviroment 
