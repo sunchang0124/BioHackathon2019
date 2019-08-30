@@ -1,6 +1,6 @@
 cd containers/TSEImage
-rm -R output/
-mkdir output
+# rm -R output/
+# mkdir output
 # rm -R input.json
 # echo >input.json
 # ##### Commented for now, needs to be executed based on output of containers above, and implemented in input.txt

@@ -1,1 +1,2 @@
-docker run --rm -v /output:/output sliptdata
+ ### Mac users ###
+ docker run --rm -v $(pwd)/output:/output sliptdata

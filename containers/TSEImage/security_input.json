@@ -1,10 +1,11 @@
-{"parties": ["party_1","party_2", "party_3"],
-    "party_1fileUUID": "4d5733cb-5071-4a6a-9e33-6fafca48c87f", 
-    "party_1encryptKey": "JKioXZNd5+NJWcR+LACQgW+MODLipOgtSRc+mU1+V9Q=", 
-    "party_1verifyKey": "4yuS/T0PsFbw7/kDm5rFwc76Xdjhd/Y+7snykkRWE2Q=",
-    "party_2fileUUID": "9eea939d-1bf3-41e0-9e9b-84b0543196fa", 
-    "party_2encryptKey": "4eTwDSBkSXRgIZd9lJ50ZHSlHclTphN60R9VatNeUBo=", 
-    "party_2verifyKey": "hQLphmmDFmPFCdmM3WV8hcJvnBcjMd4x0TEf0mYEkBE=",
-    "party_3fileUUID": "0109c57c-4ead-4e61-9b79-b3abcd57bdb8", 
-    "party_3encryptKey": "wBEvgk4bp/ZNQ/h5XwMgguCgE7SXv0OGSCwuMV9qhJ0=", 
-    "party_3verifyKey": "9voNH9X3WwT/4qFh4FBmKKaBngaWWzApAzNppnRiI7I="}
+
+    {"parties": ["party_1","party_2", "party_3"],
+        "party_1fileUUID": "eacdaae9-8d05-4f41-9022-73ca7bf4c9b9", 
+        "party_1encryptKey": "hWQW3hcx+47FDV9uOlhx2QlH90a12dmN6htPitOK9ho=", 
+        "party_1verifyKey": "UjMgC0Y8gDQgvIoPexFUTgObKPgclxW4kda1urA7h1s=",
+        "party_2fileUUID": "eb819ebf-d1c4-49a7-a5d5-b25858e7d8b8", 
+        "party_2encryptKey": "SmM8yoI/fl3riW624GaUH4kb9hp2KQhpzLQVPguBzaI=", 
+        "party_2verifyKey": "kP4K8Glu4n4zh7EAyJ/VLzcdNLxND6sX+nIoHM+VfV0=",
+        "party_3fileUUID": "13775ced-c8ea-4b19-aa58-7751a0749baa", 
+        "party_3encryptKey": "Mx0PqQ855B9MDPzVlI1Kiv7Sr8LuQUd0re0jNXBa/ig=", 
+        "party_3verifyKey": "S7KnU34uIcT0XbQ2e5GFLRjQGXiOiWP/fBzrgAjSuro="}

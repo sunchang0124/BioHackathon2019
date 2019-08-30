@@ -1,5 +1,4 @@
-import time
-import json
+import time, json
 start_time = time.time()
 
 import pandas as pd
@@ -14,8 +13,12 @@ df = pd.read_csv('data_party_1.csv')
 # Salt must be 128 bytes in hex.
 ### 18-08-2019 ###
 salt_text = input['salt_text']
-salt_byte = int(128/len(salt_text))
-salt = salt_text.encode('UTF-8') * salt_byte #2.2 Salt (key)
+salt_missing = 128 - len(salt_text)
+if salt_missing > 0:
+    salt_text = salt_text + ("a" * salt_missing)
+if salt_missing < 0:
+    salt_text = salt_text[:salt_missing]
+salt = salt_text.encode('UTF-8')
 
 # Input names of PI columns
 PI = input['id_feature'] 
