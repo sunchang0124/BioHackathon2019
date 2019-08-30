@@ -1,8 +1,5 @@
 # Material for BioHackathon 2019 #
-Contact: Chang Sun <chang.sun@maastrichtuniversity.nl> \
-Contact: Johan van Soest <johan.vansoest@maastro.nl>
-
-This repository is the extended version of the repository from https://gitlab.com/OleMussmann/DataSharing 
+To clone this branch: ```git clone --branch localRunning https://github.com/sunchang0124/BioHackathon2019.git```
 
 ## Prerequisites ##
 Hardware: 
@@ -53,7 +50,7 @@ Hardware:
 ### 3. Setup another station as Trust Secure Environment (TSE) ###
 1. Go to containers/TSEImage and run:
     - ```docker rmi datasharing/tse```
-    - ```docker build -t datasharing/tse .\```
+    - ```docker build -t datasharing/tse .```
 
 ** Now, all parties are ready **
 
@@ -114,3 +111,7 @@ Hardware:
 5. Results will be generated at TSE
 6. TSE Send results back to researcher
 
+## Contact ##
+Chang Sun <chang.sun@maastrichtuniversity.nl>
+Johan van Soest <johan.vansoest@maastro.nl>
+This repository is the extended version of the repository from https://gitlab.com/OleMussmann/DataSharing 
