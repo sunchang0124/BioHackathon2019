@@ -61,6 +61,7 @@ Hardware:
     MAC Users:
     - ```docker run --rm -p 5001:5001 \ ```
     - ```-v $(pwd)/storage:/storage fileservice ```
+
     Windows users:
     - ```docker run --rm -p 5001:5001 \ ```
     - ```-v %cd%/storage:/storage fileservice ```
