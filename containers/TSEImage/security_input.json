@@ -1,8 +1,15 @@
 
-    {"parties": ["party_1","party_2"],
-        "party_1fileUUID": " ", 
-        "party_1encryptKey": " ", 
-        "party_1verifyKey": " ",
-        "party_2fileUUID": " ", 
-        "party_2encryptKey": " ", 
-        "party_2verifyKey": " "}
+{   "parties": ["party_1","party_2","party_3","party_4"],
+    "party_1fileUUID": " ", 
+    "party_1encryptKey": " ", 
+    "party_1verifyKey": " ",
+    "party_2fileUUID": " ", 
+    "party_2encryptKey": " ", 
+    "party_2verifyKey": " ",
+    "party_3fileUUID": " ", 
+    "party_3encryptKey": " ", 
+    "party_3verifyKey": " ",
+    "party_4fileUUID": " ", 
+    "party_4encryptKey": " ", 
+    "party_4verifyKey": " "
+}
