@@ -23,15 +23,25 @@ Hardware:
 
 
 ## Install the infrastructure locally ##
-### 1. Prepare datasets for multiple parties ###
+### 0. Prepare datasets for multiple parties  ###
+
+#### (Example data files are in data parties folder. You can skip this step if you want) ####
+
 1. In terminal, go to **DataPrepare** folder and run:
 ```shell
 docker build -t splitdata .
 ```
 (You can run `docker images` to check if "splitdata" image is in the list)
-2. Edit **input.json** file. Input how many data parties you have and which data file you use. (Details about data are described in the README.md file in "DataPrepare" folder)
+2. Edit **input.json** file
 
-3. In terminal
+```shell
+{
+    "num_of_party": 4, # how many data parties you have
+    "data_file": "Generated_Datasets/generated_data_5000.csv" # which data file you use
+}
+```
+
+2. In terminal
 - Linux/macOS:
 ```shell
 docker run --rm -v $(pwd)/output:/output splitdata
@@ -47,21 +57,25 @@ docker run --rm -v %cd%/output:/output splitdata
     - copy paste one existing "Party_X_Container" and rename it
     - Change name of the data file in **Dockerfile** ```COPY data_party_X.csv data_party_X.csv```
 
-### 2. Setup stations at data parties ###
-1. Go to _containers/createContainer_ and build the base image (contains Python 3.6 and libraries) by running:
+### 1. Setup stations at data parties ###
+1. Go to **containers/createContainer**  and build the base image (contains Python 3.6 and libraries) by running:
 ```shell
 cp -R ../../PQcrypto baseContainer/PQcrypto
 docker rmi datasharing/base # (skip this line if it's your first time build this image)
-  docker build -t datasharing/base baseContainer/
-  rm -R baseContainer/PQcrypto
+docker build -t datasharing/base baseContainer/
+rm -R baseContainer/PQcrypto
 ```
 
 2. Go to each party folder (e.g., "Party_1_Container", "Party_2_Container") and edit **input.json** file. Each folder acts as a data party. 
-    - Give an unique name to "party_name" (different from other parties)
-    - Input the name of the data file
-    - Give the agreed on salt (data parties know and use the same salt)
-    - Input personal identifier features which are used for linking purpose
-3. In terminal, run
+```shell
+{   "party_name": "party_1", # unique name
+    "data_file": "data_party_1.csv", # file name of the data 
+    "salt_text": "apple", # the agreed on salt (all data parties use the same salt)
+    "id_feature": ["housenum", "zipcode", "date_of_birth", "sex"] # personal identifier features used for linking purpose
+}
+```
+
+2. In terminal, run
 ```shell
 docker rmi datasharing/"your_party_name" # (e.g., party_1)
 
@@ -83,7 +97,7 @@ docker build -t datasharing/tse .
 
 ### 4. Start the communication channel (on localhost(0.0.0.0:5001)) ###
 1. Go to Local_PyTaskManager folder and run in terminal: 
-   
+  
 ```shell
 docker build -t fileservice .
 ```
@@ -107,33 +121,47 @@ docker run --rm -p 5001:5001 \
 ```shell
 docker run --rm --add-host dockerhost:192.168.65.2 \
   -v $(pwd)/input.json:/input.json \
-  -v $(pwd)/encryption:/encryption datasharing/"Your_party_name" 
+  -v $(pwd)/encryption:/encryption datasharing/*Your_party_name* `
 ```
-* e.g. `party_1`
-
 - Windows:
 ```shell
 docker run --rm --add-host dockerhost:10.0.75.1 \
   -v %cd%/input.json:/input.json \
-  -v %cd%/encryption:/encryption datasharing/"Your_party_name"
+  -v %cd%/encryption:/encryption datasharing/*Your_party_name*`
 ```
-* e.g. `party_1`
+2. A **your_party_name_key.json** file will be generated in a new **encryption** folder. It contains: UUID of data file, verify key, and encryption key. These keys need to be send to TSE
 
-2. A "your_party_name_key.json" file will be generated in a new "encryption" folder. It contains: UUID of data file, verify key, and encryption key. These keys need to be send to TSE
-3. Potiental error in this step: "dockerhost:192.168.65.2" and "dockerhost:10.0.75.1" 
-4. You can run "sh S1_DataPartyRun.sh" on Mac. It combines all command lines into one file.
+```shell
+{		"party_1fileUUID": "xxxxx", 
+		"party_1encryptKey": "xxxxx",
+		"party_1verifyKey": "xxxxx"
+}
+```
+
+
 
 ### 6. Execution at TSE ###
 1. Go to _containers/TSEImage_ and edit **security_input.json**:
-    - Give names of all data parties
-    - and input data file UUIDs, encrypt keys, and verify keys from all data parties
+    
+```shell
+{		 "parties": ["party_1","party_2"],
+     "party_1fileUUID": "xxxxx", 
+     "party_1encryptKey": "xxxxx", 
+     "party_1verifyKey": "xxxxx",
+     "party_2fileUUID": "yyyyy", 
+     "party_2encryptKey": "yyyyy", 
+     "party_2verifyKey": "yyyyy",
+  }
+```
 
-2. Run in terminal:
+
+
+1. Run in terminal:
 - Linux/macOS:
 ```shell
 docker run --rm --add-host dockerhost:192.168.65.2 \
-  -v $(pwd)/output:/output \
-  -v $(pwd)/security_input.json:/security_input.json datasharing/tse
+-v $(pwd)/output:/output \
+-v $(pwd)/security_input.json:/security_input.json datasharing/tse
 ```
 
 - Windows:

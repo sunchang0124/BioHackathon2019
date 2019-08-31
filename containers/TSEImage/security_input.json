@@ -1,14 +1,8 @@
 
-    {"parties": ["party_1","party_2", "party_3", "party_4"],
-        "party_1fileUUID": "ef98aeec-f4ac-4b6e-9238-3575f33d5583", 
-        "party_1encryptKey": "L2po0ySd7waNVjDGKzAHWftdOk2xlFXoBcxpzdeV1KQ=", 
-        "party_1verifyKey": "Pw57fE9JdriFLGRZ8WHQQJL/Y+Kx6eLXkPJ6kJFSHlQ=",
-        "party_2fileUUID": "17c2d109-0914-4ac1-bdff-52c9032bd8b1", 
-        "party_2encryptKey": "Y/psjJ8+3xLfoA+uqQgkl9bgsJS+ZQPZh1U3ZGxQvE4=", 
-        "party_2verifyKey": "CmyeflFKZhtJiW1JoiJXrYe5/xYcNCV2ciAzhcnJyB4=",
-        "party_3fileUUID": "b400a19f-cbfe-4955-a771-dcafd370640f", 
-        "party_3encryptKey": "DiJWla4JUegvbTNwgHNbWGzrC5MNAY1GhIu/jHvbb6g=", 
-        "party_3verifyKey": "WmylnZ52N3QmqoImd/nRgkC7L4EE3caMIy649UjRAlE=",
-        "party_4fileUUID": "51390b96-7514-4927-a473-1cdddca9d877", 
-        "party_4encryptKey": "ZzGGWoK4JQ+rCooUvddgwnsAWCCmFYtbX05vwg3KOfo=", 
-        "party_4verifyKey": "G557HHvM95tyLaP0tBuS2XtCrV6e7av8A+VSNX7OMa0="}
+    {"parties": ["party_1","party_2"],
+        "party_1fileUUID": " ", 
+        "party_1encryptKey": " ", 
+        "party_1verifyKey": " ",
+        "party_2fileUUID": " ", 
+        "party_2encryptKey": " ", 
+        "party_2verifyKey": " "}
