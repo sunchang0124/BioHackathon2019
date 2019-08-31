@@ -57,9 +57,13 @@ Hardware:
 ### 4. Start the communication channel (on localhost(0.0.0.0:5001)) ###
 1. Go to Local_PyTaskManager folder and run in terminal: 
     - ```docker build -t fileservice .```
-2. After building the image, run: 
+2. After building the image, run
+    MAC Users:
     - ```docker run --rm -p 5001:5001 \ ```
     - ```-v $(pwd)/storage:/storage fileservice ```
+    Windows users:
+    - ```docker run --rm -p 5001:5001 \ ```
+    - ```-v %cd%/storage:/storage fileservice ```
 
 ### 5. Data parties prepare and encrypt data files ###
 1. Start a new tab in terminal and go to each party's folder (e.g., Party_1_Container):
