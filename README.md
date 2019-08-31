@@ -68,10 +68,11 @@ rm -R baseContainer/PQcrypto
 
 2. Go to each party folder (e.g., "Party_1_Container", "Party_2_Container") and edit **input.json** file. Each folder acts as a data party. 
 ```shell
-{   "party_name": "party_1", # unique name
-    "data_file": "data_party_1.csv", # file name of the data 
-    "salt_text": "apple", # the agreed on salt (all data parties use the same salt)
-    "id_feature": ["housenum", "zipcode", "date_of_birth", "sex"] # personal identifier features used for linking purpose
+{   
+	"party_name": "party_1", # unique name
+	"data_file": "data_party_1.csv", # file name of the data 
+	"salt_text": "apple", # the agreed on salt (all data parties use the same salt)
+	"id_feature": ["housenum", "zipcode", "date_of_birth", "sex"] # personal identifier features used for linking purpose
 }
 ```
 
@@ -132,9 +133,10 @@ docker run --rm --add-host dockerhost:10.0.75.1 \
 2. A **your_party_name_key.json** file will be generated in a new **encryption** folder. It contains: UUID of data file, verify key, and encryption key. These keys need to be send to TSE
 
 ```shell
-{		"party_1fileUUID": "xxxxx", 
-		"party_1encryptKey": "xxxxx",
-		"party_1verifyKey": "xxxxx"
+{		
+	"party_1fileUUID": "xxxxx", 
+	"party_1encryptKey": "xxxxx",
+	"party_1verifyKey": "xxxxx"
 }
 ```
 
@@ -144,13 +146,14 @@ docker run --rm --add-host dockerhost:10.0.75.1 \
 1. Go to _containers/TSEImage_ and edit **security_input.json**:
     
 ```shell
-{		 "parties": ["party_1","party_2"],
-     "party_1fileUUID": "xxxxx", 
-     "party_1encryptKey": "xxxxx", 
-     "party_1verifyKey": "xxxxx",
-     "party_2fileUUID": "yyyyy", 
-     "party_2encryptKey": "yyyyy", 
-     "party_2verifyKey": "yyyyy",
+{		 
+	"parties": ["party_1","party_2"],
+  "party_1fileUUID": "xxxxx", 
+  "party_1encryptKey": "xxxxx", 
+  "party_1verifyKey": "xxxxx",
+  "party_2fileUUID": "yyyyy", 
+  "party_2encryptKey": "yyyyy", 
+  "party_2verifyKey": "yyyyy",
   }
 ```
 
