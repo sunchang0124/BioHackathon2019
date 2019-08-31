@@ -60,25 +60,23 @@ docker run --rm -v %cd%/output:/output splitdata
 ### 1. Setup stations at data parties ###
 1. Go to **containers/createContainer**  and build the base image (contains Python 3.6 and libraries) by running:
 ```shell
-cp -R ../../PQcrypto baseContainer/PQcrypto
-docker rmi datasharing/base # (skip this line if it's your first time build this image)
+# docker rmi datasharing/base # (uncomment this line if you built this image before)
 docker build -t datasharing/base baseContainer/
-rm -R baseContainer/PQcrypto
 ```
 
 2. Go to each party folder (e.g., "Party_1_Container", "Party_2_Container") and edit **input.json** file. Each folder acts as a data party. 
 ```shell
-{   
-	"party_name": "party_1", # unique name
-	"data_file": "data_party_1.csv", # file name of the data 
-	"salt_text": "apple", # the agreed on salt (all data parties use the same salt)
-	"id_feature": ["housenum", "zipcode", "date_of_birth", "sex"] # personal identifier features used for linking purpose
+{
+  "party_name": "party_1", # unique name
+  "data_file": "data_party_1.csv", # file name of the data 
+  "salt_text": "apple", # the agreed on salt (all data parties use the same salt)
+  "id_feature": ["housenum", "zipcode", "date_of_birth", "sex"] # personal identifier features used for linking purpose
 }
 ```
 
 2. In terminal, run
 ```shell
-docker rmi datasharing/"your_party_name" # (e.g., party_1)
+# docker rmi datasharing/"your_party_name" # (e.g., party_1) (uncomment this line if you built this image before)
 
 docker build -t datasharing/"your_party_name" .
 ```
@@ -89,7 +87,7 @@ docker build -t datasharing/"your_party_name" .
 ### 3. Setup another station as Trust Secure Environment (TSE) ###
 1. Go to containers/TSEImage and run:
 ```shell 
-docker rmi datasharing/tse
+# docker rmi datasharing/tse (uncomment this line if you built this image before)
 
 docker build -t datasharing/tse .
 ```
@@ -106,14 +104,12 @@ docker build -t fileservice .
 2. After building the image, run
 - Linux/macOS:
 ```shell
-docker run --rm -p 5001:5001 \
-  -v $(pwd)/storage:/storage fileservice
+docker run --rm -p 5001:5001 -v $(pwd)/storage:/storage fileservice
 ```
 
 - Windows:
 ```shell
-docker run --rm -p 5001:5001 \
-  -v %cd%/storage:/storage fileservice
+docker run --rm -p 5001:5001 -v %cd%/storage:/storage fileservice
 ```
 
 ### 5. Data parties prepare and encrypt data files ###
@@ -121,22 +117,22 @@ docker run --rm -p 5001:5001 \
 - Linux/macOS:
 ```shell
 docker run --rm --add-host dockerhost:192.168.65.2 \
-  -v $(pwd)/input.json:/input.json \
-  -v $(pwd)/encryption:/encryption datasharing/*Your_party_name* `
+-v $(pwd)/input.json:/input.json \
+-v $(pwd)/encryption:/encryption datasharing/*Your_party_name*
 ```
 - Windows:
 ```shell
 docker run --rm --add-host dockerhost:10.0.75.1 \
-  -v %cd%/input.json:/input.json \
-  -v %cd%/encryption:/encryption datasharing/*Your_party_name*`
+-v %cd%/input.json:/input.json \
+-v %cd%/encryption:/encryption datasharing/*Your_party_name*
 ```
 2. A **your_party_name_key.json** file will be generated in a new **encryption** folder. It contains: UUID of data file, verify key, and encryption key. These keys need to be send to TSE
 
-```shell
-{		
-	"party_1fileUUID": "xxxxx", 
-	"party_1encryptKey": "xxxxx",
-	"party_1verifyKey": "xxxxx"
+```json
+{
+  "party_1fileUUID": "xxxxx", 
+  "party_1encryptKey": "xxxxx",
+  "party_1verifyKey": "xxxxx"
 }
 ```
 
@@ -145,16 +141,16 @@ docker run --rm --add-host dockerhost:10.0.75.1 \
 ### 6. Execution at TSE ###
 1. Go to _containers/TSEImage_ and edit **security_input.json**:
     
-```shell
-{		 
-	"parties": ["party_1","party_2"],
+```json
+{
+  "parties": ["party_1","party_2"],
   "party_1fileUUID": "xxxxx", 
-  "party_1encryptKey": "xxxxx", 
+  "party_1encryptKey": "xxxxx",
   "party_1verifyKey": "xxxxx",
-  "party_2fileUUID": "yyyyy", 
-  "party_2encryptKey": "yyyyy", 
+  "party_2fileUUID": "yyyyy",
+  "party_2encryptKey": "yyyyy",
   "party_2verifyKey": "yyyyy",
-  }
+}
 ```
 
 
@@ -170,8 +166,8 @@ docker run --rm --add-host dockerhost:192.168.65.2 \
 - Windows:
 ```shell
 docker run --rm --add-host dockerhost:10.0.75.1 \
-  -v %cd%/output:/output \
-  -v %cd%/security_input.json:/security_input.json datasharing/tse
+-v %cd%/output:/output \
+-v %cd%/security_input.json:/security_input.json datasharing/tse
 ```
 
 
