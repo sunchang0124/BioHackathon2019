@@ -9,8 +9,9 @@ RUN mkdir /encryption
 RUN mkdir /output
 
 COPY run.py run.py
+COPY functions.py functions.py
 
-RUN pip install mock pynacl crypto pycrypto pandas numpy sklearn
+RUN pip install mock pynacl crypto pycrypto pandas numpy sklearn SPARQLWrapper requests
 
 ADD PQcrypto/PQencryption/ /usr/local/lib/python3.6/site-packages/PQencryption/
 
