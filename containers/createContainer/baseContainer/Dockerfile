@@ -9,6 +9,7 @@ RUN mkdir /encryption
 RUN mkdir /output
 
 COPY run.py run.py
+COPY functions.py functions.py
 
 RUN pip install mock pynacl crypto pycrypto pandas numpy sklearn
 
