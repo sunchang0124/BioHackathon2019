@@ -58,10 +58,10 @@ docker run --rm -v %cd%/output:/output splitdata
     - Change name of the data file in **Dockerfile** ```COPY data_party_X.csv data_party_X.csv```
 
 ### 1. Setup stations at data parties ###
-1. Go to **containers/createContainer**  and build the base image (contains Python 3.6 and libraries) by running:
+1. Go to **containers/createContainer/baseContainer**  and build the base image (contains Python 3.6 and libraries) by running:
 ```shell
 # docker rmi datasharing/base # (uncomment this line if you built this image before)
-docker build -t datasharing/base baseContainer/
+docker build -t datasharing/base .
 ```
 
 2. Go to each party folder (e.g., "Party_1_Container", "Party_2_Container") and edit **input.json** file. Each folder acts as a data party. 
@@ -152,7 +152,7 @@ docker run --rm --add-host dockerhost:10.0.75.1 \
 
 ### 6. Execution at TSE ###
 1. Go to _containers/TSEImage_ and edit **security_input.json**:
-    
+  
 ```json
 {
   "parties": ["party_1","party_2"],
