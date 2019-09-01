@@ -112,7 +112,19 @@ docker run --rm -p 5001:5001 -v $(pwd)/storage:/storage fileservice
 docker run --rm -p 5001:5001 -v %cd%/storage:/storage fileservice
 ```
 
+**3.	If connection is failed, alternative way:**
+
+- Install python 3.6 + and pip on your machine
+
+- Install Flask library and run fileservice locally (not in a container)
+
+- ```shell
+  pip install flask 
+  python FileService.py
+  ```
+
 ### 5. Data parties prepare and encrypt data files ###
+
 1. Start a new tab in terminal and go to each party's folder (e.g., Party_1_Container):
 - Linux/macOS:
 ```shell
