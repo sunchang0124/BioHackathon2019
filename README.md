@@ -50,7 +50,7 @@ docker pull sophia921025/dataparty
 docker pull sophia921025/tse
 ```
 
-If you want to know the scripts in the images, please check the master branch in this repo. 
+If you want to know the scripts in the images, please check LocalTest folder in this repo. 
 
 ### 1. Use Docker container to run:
 
