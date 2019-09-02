@@ -28,7 +28,7 @@ Hardware:
 
 We've set up three stations - two for data parties and one for Trusted Secure Environment on "http://biohack.personalhealthtrain.net" 
 
-```json
+```shell
 [{'id': 1,
   'last_seen': '2019-09-02 19:14:13.829209',
   'name': 'Trusted Secure Environment (TSE)'},
