@@ -26,16 +26,25 @@ Hardware:
 
 ## Test with URL connection 
 
-We've set up three stations - two for data parties and one for Trusted Secure Environment on "http://biohack.personalhealthtrain.net" 
+We've set up three stations - two for data parties and one for Trusted Secure Environment on "http://biohack.personalhealthtrain.net" Here are the information about stations (data parties need to provide basic information when they register to the network):
 
 ```shell
-[{'id': 1,
+[{'country': 'The Netherlands',
+  'email': 'example1@email.com',
+  'id': 1,
+  'institute': 'Maastricht University',
   'last_seen': '2019-09-02 19:14:13.829209',
   'name': 'Trusted Secure Environment (TSE)'},
- {'id': 2,
+ {'country': 'The Netherlands',
+  'email': 'example2@email.com',
+  'id': 2,
+  'institute': 'Maastricht University',
   'last_seen': '2019-09-02 19:14:17.864963',
   'name': 'Data Party A'},
- {'id': 3,
+ {'country': 'The Netherlands',
+  'email': 'example3@email.com',
+  'id': 3,
+  'institute': 'Maastricht University',
   'last_seen': '2019-09-02 19:14:14.689868',
   'name': 'Data Party B'}]
 ```
@@ -66,10 +75,10 @@ docker build -t rundataparty .
 {
   "party_id": 2, # from above information
   "party_name": "party_1", # unique name of data party
-    "data_file": "https://raw.githubusercontent.com/sunchang0124/BioHackathon2019/localRunning/containers/createContainer/Party_4_Container/data_party_4.csv", # path to data file
-    "salt_text": "apple", # the agreed on salt (all data parties use the same salt)
-    "id_feature": ["housenum", "zipcode", "date_of_birth", "sex"], ## personal identifier features used for linking purpose
-    "signalStation":"http://biohack.personalhealthtrain.net" # the connecting url
+  "data_file": "https://raw.githubusercontent.com/sunchang0124/BioHackathon2019/localRunning/containers/createContainer/Party_4_Container/data_party_4.csv", # path to data file
+  "salt_text": "apple", # the agreed on salt (all data parties use the same salt)
+  "id_feature": ["housenum", "zipcode", "date_of_birth", "sex"], ## personal identifier features used for linking purpose
+  "signalStation":"http://biohack.personalhealthtrain.net" # the connecting url
 }
 ```
 
@@ -93,15 +102,17 @@ docker build -t runtse .
 
 4. Stay in the same folder, edit **TSEinput.josn** file:
 
-```json
-{"signalStation":"http://biohack.personalhealthtrain.net",
-        "parties": ["party_1","party_2"],
-        "party_1fileUUID": " ", 
-        "party_1encryptKey": " ", 
-        "party_1verifyKey": " ",
-        "party_4fileUUID": " ", 
-        "party_4encryptKey": " ", 
-        "party_4verifyKey": " "}
+```shell
+{
+"signalStation":"http://biohack.personalhealthtrain.net", # the connecting url
+"parties": ["party_1","party_2"],
+"party_1fileUUID": " ", # UUID, encryption, verification keys from data parties 
+"party_1encryptKey": " ", 
+"party_1verifyKey": " ",
+"party_4fileUUID": " ", 
+"party_4encryptKey": " ", 
+"party_4verifyKey": " "
+}
 ```
 
 5. Mac/Linux
