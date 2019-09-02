@@ -1,0 +1,8 @@
+{"signalStation":"http://biohack.personalhealthtrain.net",
+        "parties": ["party_1","party_4"],
+        "party_1fileUUID": "6ce2807b-65b2-4068-9315-271015e71a02", 
+        "party_1encryptKey": "nlC8gQHZhDFudS1FFZ/l0URoC2Xd1/zOSpB96S1bwQc=", 
+        "party_1verifyKey": "ylYWKO2ZIcJKxNi7XNp0BhZ94icmrGOt0QmSMrEglqk=",
+        "party_4fileUUID": "8d219572-8f43-4454-a55e-c81bcdee4960", 
+        "party_4encryptKey": "cucAlsBrvnqjKs5MXwcmafODcJA1pAV2N5iPArlE+5w=", 
+        "party_4verifyKey": "nZmwYQb3RW2660AV1Q3M6lS3XNFYHbBPRmJJUm8MzrI="}

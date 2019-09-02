@@ -1,0 +1,8 @@
+{
+    "party_id": 3,
+    "party_name": "party_4", 
+    "data_file": "https://raw.githubusercontent.com/sunchang0124/BioHackathon2019/localRunning/containers/createContainer/Party_4_Container/data_party_4.csv",
+    "salt_text": "apple",
+    "id_feature": ["housenum", "zipcode", "date_of_birth", "sex"],
+    "signalStation":"http://biohack.personalhealthtrain.net"
+}
