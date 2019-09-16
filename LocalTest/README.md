@@ -21,12 +21,12 @@ docker build -t splitdata .
 2. In terminal
 - Linux/macOS:
 ```shell
-docker run --rm -v $(pwd)/output:/output splitdata
+docker run --rm -v "$(pwd)/output:/output" splitdata
 ```
 - Windows:
 
 ```shell
-docker run --rm -v %cd%/output:/output splitdata
+docker run --rm -v "%cd%/output:/output" splitdata
 ```
 
 4. You will see splited datasets files in a new generated **output"** folder. Put splited datasets into data parties foler (e.g., "Party_1_Container", "Party_2_Container") 
@@ -81,12 +81,12 @@ docker build -t fileservice .
 2. After building the image, run
 - Linux/macOS:
 ```shell
-docker run --rm -p 5001:5001 -v $(pwd)/storage:/storage fileservice
+docker run --rm -p 5001:5001 -v "$(pwd)/storage:/storage" fileservice
 ```
 
 - Windows:
 ```shell
-docker run --rm -p 5001:5001 -v %cd%/storage:/storage fileservice
+docker run --rm -p 5001:5001 -v "%cd%/storage:/storage" fileservice
 ```
 
 **3.	If connection is failed, alternative way:**
@@ -106,14 +106,14 @@ docker run --rm -p 5001:5001 -v %cd%/storage:/storage fileservice
 - Linux/macOS:
 ```shell
 docker run --rm --add-host dockerhost:192.168.65.2 \
--v $(pwd)/input.json:/input.json \
--v $(pwd)/encryption:/encryption datasharing/*Your_party_name*
+-v "$(pwd)/input.json:/input.json" \
+-v "$(pwd)/encryption:/encryption datasharing/*Your_party_name*"
 ```
 - Windows:
 ```shell
 docker run --rm --add-host dockerhost:10.0.75.1 \
--v %cd%/input.json:/input.json \
--v %cd%/encryption:/encryption datasharing/*Your_party_name*
+-v "%cd%/input.json:/input.json" \
+-v "%cd%/encryption:/encryption datasharing/*Your_party_name*"
 ```
 2. A **your_party_name_key.json** file will be generated in a new **encryption** folder. It contains: UUID of data file, verify key, and encryption key. These keys need to be send to TSE
 
